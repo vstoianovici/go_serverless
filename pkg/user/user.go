@@ -99,7 +99,7 @@ func CreateUser(req events.APIGatewayProxyRequest, tableName string, dynaClient 
 
 	_, err = dynaClient.PutItem(input)
 	if err != nil {
-		return nil, errors.New(ErrorCouldNotDynamoPutItem)
+		return nil, err
 	}
 	return &u, nil
 }
@@ -130,8 +130,9 @@ func UpdateUser(req events.APIGatewayProxyRequest, tableName string, dynaClient 
 
 	_, err = dynaClient.PutItem(input)
 	if err != nil {
-		return nil, errors.New(ErrorCouldNotDynamoPutItem)
+		return nil, err
 	}
+
 	return &u, nil
 }
 
